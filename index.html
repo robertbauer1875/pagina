@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎮 Game Zone | x.uk</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('background.jpg') center/cover no-repeat fixed; /* 🌄 your background image */
+    position: relative;
+  }
+
+  /* Overlay dark gradient for readability */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    text-shadow: 0 0 15px #ff47d1;
+    z-index: 1;
+    animation: fadeIn 1.5s ease;
+  }
+
+  #info {
+    z-index: 1;
+    margin-bottom: 25px;
+    font-size: 1.1em;
+    animation: fadeIn 2s ease;
+  }
+
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    width: 90%;
+    max-width: 720px;
+    z-index: 1;
+    animation: fadeInUp 2s ease forwards;
+  }
+
+  .game-btn {
+    background: linear-gradient(135deg, #3a0ca3, #7209b7);
+    border: none;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(114, 9, 183, 0.6);
+    text-shadow: 0 0 6px rgba(255,255,255,0.3);
+  }
+
+  .game-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(247, 37, 133, 0.8);
+    background: linear-gradient(135deg, #f72585, #b5179e);
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 0.9em;
+    z-index: 1;
+    opacity: 0.8;
+    animation: fadeIn 2.5s ease;
+  }
+
+  /* ✈️ Plane animation */
+  #plane {
+    position: absolute;
+    width: 60px;
+    top: 100px;
+    left: -100px;
+    z-index: 2;
+    animation: fly 20s linear infinite;
+  }
+
+  @keyframes fly {
+    0% { transform: translateX(-100px) translateY(0) rotate(0deg); }
+    50% { transform: translateX(calc(100vw - 50px)) translateY(20px) rotate(2deg); }
+    100% { transform: translateX(-100px) translateY(-10px) rotate(-2deg); }
+  }
+
+  /* 🎄 Tree light blinking */
+  #tree {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    width: 100px;
+    z-index: 1;
+  }
+
+  .light {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    box-shadow: 0 0 10px red;
+    animation: blink 1s infinite alternate;
+  }
+  .light:nth-child(2) { left: 20px; animation-delay: 0.2s; background: yellow; box-shadow: 0 0 10px yellow; }
+  .light:nth-child(3) { left: 40px; animation-delay: 0.4s; background: lime; box-shadow: 0 0 10px lime; }
+  .light:nth-child(4) { left: 60px; animation-delay: 0.6s; background: cyan; box-shadow: 0 0 10px cyan; }
+  .light:nth-child(5) { left: 80px; animation-delay: 0.8s; background: pink; box-shadow: 0 0 10px pink; }
+
+  @keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.3; }
+  }
+
+  /* ❄️ Snow effect */
+  .snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    animation: fall linear infinite;
+    z-index: 3;
+  }
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Fade animations */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+  <img id="plane" src="plane.png" alt="">
+
+  <h1>🎮 Welcome to Game Zone!</h1>
+
+  <div id="info">🕒 <span id="clock"></span> | 📅 <span id="date"></span> | 🌡️ <span id="temp">Loading...</span></div>
+
+  <div class="button-grid">
+    <button class="game-btn" onclick="location.href='ebauer.uk/memory.html'">🧠 Memory Game</button>
+    <button class="game-btn" onclick="location.href='cars/cars.html'">🚗 Cars Game</button>
+    <button class="game-btn" onclick="location.href='gallery/gallery.html'">🖼️ Image Gallery</button>
+    <button class="game-btn" onclick="location.href='space/space.html'">🚀 Space Shooter</button>
+    <button class="game-btn" onclick="location.href='snake/snake.html'">Images</button>
+    <button class="game-btn" onclick="location.href='tetris/tetris.html'">🧱 Tetris</button>
+  </div>
+
+  <footer>© 2025 x.uk — Stay cozy and have fun ❄️</footer>
+
+  <div id="tree">
+    <img src="tree.png" width="100" alt="Tree">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+  </div>
+
+<script>
+/* 🕒 Clock + Date */
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString();
+  const date = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
+  document.getElementById('clock').textContent = time;
+  document.getElementById('date').textContent = date;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+/* 🌡️ Temperature (open-meteo API) */
+async function getTemperature() {
+  try {
+    const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.5&longitude=-0.12&current_weather=true');
+    const data = await res.json();
+    const temp = data.current_weather.temperature;
+    document.getElementById('temp').textContent = `${temp}°C`;
+  } catch {
+    document.getElementById('temp').textContent = "N/A";
+  }
+}
+getTemperature();
+
+/* ❄️ Snowflakes generator */
+const snowContainer = document.body;
+for (let i = 0; i < 40; i++) {
+  const snow = document.createElement('div');
+  snow.className = 'snowflake';
+  snow.textContent = '❄';
+  snow.style.left = Math.random() * 100 + 'vw';
+  snow.style.fontSize = (Math.random() * 14 + 8) + 'px';
+  snow.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  snow.style.animationDelay = Math.random() * 5 + 's';
+  snowContainer.appendChild(snow);
+}
+</script>
+</body>
+</html>

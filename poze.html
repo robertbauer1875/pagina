@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Gallery with Zoom</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 20px 0;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .gallery-item {
+    background: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.03);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .caption {
+    padding: 10px;
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  /* Zoom overlay */
+  .overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+  }
+
+  .overlay.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    cursor: zoom-out;
+  }
+</style>
+</head>
+<body>
+  <h1>POZE</h1>
+
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="M42 Orion Nebula.png" alt="Image 1">
+      <div class="caption">M42 Orion Nebula</div>
+    </div>
+    <div class="gallery-item">
+      <img src="M27.png" alt="Image 2">
+      <div class="caption">M27</div>
+    </div>
+    <div class="gallery-item">
+      <img src="M31 Andromeda Galaxy.png" alt="Image 3">
+      <div class="caption">M31 Andromeda Galaxy</div>
+    </div>
+    <div class="gallery-item">
+      <img src="M42 Orion Nebula.png" alt="Image 4">
+      <div class="caption">M42 Orion Nebala</div>
+    </div>
+    <div class="gallery-item">
+      <img src="M51.png" alt="Image 5">
+      <div class="caption">M51</div>
+    </div>
+    <div class="gallery-item">
+      <img src="luna.png" alt="Image 6">
+      <div class="caption">Moon</div>
+    </div>
+
+  <div class="gallery-item">
+      <img src="luna1.png" alt="Image 5">
+      <div class="caption">Moon</div>
+    </div>
+
+
+  <div class="gallery-item">
+      <img src="luna2.png" alt="Image 5">
+      <div class="caption">Moon</div>
+    </div>
+
+
+  </div>
+
+  <div id="overlay" class="overlay">
+    <img id="overlayImg" src="" alt="Zoomed image">
+  </div>
+
+<script>
+  const overlay = document.getElementById('overlay');
+  const overlayImg = document.getElementById('overlayImg');
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+
+  galleryItems.forEach(img => {
+    img.addEventListener('click', () => {
+      overlayImg.src = img.src;
+      overlay.classList.add('active');
+    });
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+</script>
+</body>
+</html>
